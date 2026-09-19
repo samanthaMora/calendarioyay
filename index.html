@@ -43,18 +43,26 @@
   var backContent = document.getElementById('back-content');
   var error = document.getElementById('gate-error');
 
-  function flip() {
-    if (flipCard.classList.contains('flipped')) return;
-    flipCard.classList.add('flipped');
-    flipCard.setAttribute('aria-pressed', 'true');
-    window.setTimeout(function () { input.focus(); }, 450);
+  function toggleFlip() {
+    var isFlipped = flipCard.classList.toggle('flipped');
+    flipCard.setAttribute('aria-pressed', isFlipped ? 'true' : 'false');
+    if (isFlipped) {
+      window.setTimeout(function () { input.focus(); }, 450);
+    } else {
+      error.hidden = true;
+      flipCard.focus();
+    }
   }
 
-  flipCard.addEventListener('click', flip);
+  flipCard.addEventListener('click', function (e) {
+    if (e.target.closest('.gate-form')) return;
+    toggleFlip();
+  });
   flipCard.addEventListener('keydown', function (e) {
+    if (e.target !== flipCard) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      flip();
+      toggleFlip();
     }
   });
 

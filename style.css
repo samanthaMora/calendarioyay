@@ -89,7 +89,7 @@ h1,h2,h3{
   justify-content:center;
   padding:24px;
   background:
-    radial-gradient(120% 90% at 82% 8%, #FBDCA0 0%, #F2A63D 32%, #C6553F 62%, #1B2A4E 100%);
+    radial-gradient(90% 65% at 50% 8%, #F4ECC6 0%, #DCE6EF 24%, #9FB8CE 48%, #5C7896 72%, #263A54 100%);
 }
 .gate-wrap{
   width:100%;
@@ -105,8 +105,8 @@ h1,h2,h3{
   font-size:0.68rem;
   letter-spacing:0.14em;
   text-transform:uppercase;
-  color:#FBF2E3;
-  opacity:0.9;
+  color:#33465F;
+  opacity:0.85;
 }
 
 /* ---------- FLIP CARD ---------- */
@@ -156,8 +156,8 @@ h1,h2,h3{
   font-size:0.68rem;
   letter-spacing:0.1em;
   text-transform:uppercase;
-  color:#FBF2E3;
-  background:linear-gradient(to top, rgba(11,42,46,0.75), transparent);
+  color:#F4ECC6;
+  background:linear-gradient(to top, rgba(30,45,70,0.8), transparent);
 }
 .flip-face.back{
   transform:rotateY(180deg);
