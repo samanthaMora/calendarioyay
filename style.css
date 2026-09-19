@@ -91,14 +91,13 @@ h1,h2,h3{
   background:
     radial-gradient(120% 90% at 82% 8%, #FBDCA0 0%, #F2A63D 32%, #C6553F 62%, #1B2A4E 100%);
 }
-.gate-card{
+.gate-wrap{
   width:100%;
-  max-width:380px;
-  background:var(--surface);
-  border-radius:18px;
-  box-shadow:0 24px 60px -20px rgba(10,20,25,0.45);
-  padding:36px 30px;
-  text-align:center;
+  max-width:300px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
 }
 .gate-eyebrow{
   margin:0;
@@ -106,16 +105,77 @@ h1,h2,h3{
   font-size:0.68rem;
   letter-spacing:0.14em;
   text-transform:uppercase;
-  color:var(--coral);
+  color:#FBF2E3;
+  opacity:0.9;
 }
-.gate-card h1{
-  margin-top:10px;
-  font-size:1.9rem;
+
+/* ---------- FLIP CARD ---------- */
+.flip-scene{
+  width:100%;
+  perspective:1400px;
+}
+.flip-card{
+  position:relative;
+  width:100%;
+  aspect-ratio:364/624;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.flip-card.flipped{
+  transform:rotateY(180deg);
+  cursor:default;
+}
+.flip-card:focus-visible{
+  outline:3px solid var(--sun);
+  outline-offset:6px;
+}
+.flip-face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:16px;
+  box-shadow:0 24px 60px -20px rgba(10,20,25,0.5);
+  overflow:hidden;
+}
+.flip-face.front{
+  background:var(--surface);
+}
+.flip-face.front img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.flip-hint{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  padding:10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+  text-align:center;
+  font-family:"Space Mono", monospace;
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:#FBF2E3;
+  background:linear-gradient(to top, rgba(11,42,46,0.75), transparent);
+}
+.flip-face.back{
+  transform:rotateY(180deg);
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:stretch;
+  padding:28px 24px;
+  text-align:center;
+}
+.flip-face.back h1{
+  font-size:1.5rem;
   font-weight:600;
   color:var(--text);
 }
 .gate-form{
-  margin-top:24px;
+  margin-top:20px;
   display:flex;
   flex-direction:column;
   gap:12px;
@@ -155,9 +215,10 @@ h1,h2,h3{
   font-size:0.85rem;
   color:var(--coral);
 }
-.gate-card.shake{ animation:shake 0.4s; }
+.back-content.shake{ animation:shake 0.4s; }
 @media (prefers-reduced-motion: reduce){
-  .gate-card.shake{ animation:none; }
+  .back-content.shake{ animation:none; }
+  .flip-card{ transition:none; }
 }
 @keyframes shake{
   0%, 100%{ transform:translateX(0); }

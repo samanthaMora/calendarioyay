@@ -11,33 +11,63 @@
 </head>
 <body>
 <div class="gate">
-  <div class="gate-card" id="gate-card">
+  <div class="gate-wrap">
     <p class="gate-eyebrow">Acceso privado</p>
-    <h1>Inicia con tu nombre</h1>
-    <form class="gate-form" id="gate-form">
-      <label for="gate-input" class="sr-only">Tu nombre</label>
-      <input type="text" id="gate-input" placeholder="Tu nombre" autocomplete="off" autocapitalize="off" spellcheck="false">
-      <button type="submit">Entrar</button>
-    </form>
-    <p class="gate-error" id="gate-error" hidden>Ese no es tu nombre. Intenta de nuevo.</p>
+
+    <div class="flip-scene">
+      <div class="flip-card" id="flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="Toca la carta para continuar">
+        <div class="flip-face front">
+          <img src="tluna.jpg" alt="Carta de tarot: La Luna">
+          <span class="flip-hint">Toca la carta</span>
+        </div>
+        <div class="flip-face back">
+          <div class="back-content" id="back-content">
+            <h1>Inicia con tu nombre</h1>
+            <form class="gate-form" id="gate-form">
+              <label for="gate-input" class="sr-only">Tu nombre</label>
+              <input type="text" id="gate-input" placeholder="Tu nombre" autocomplete="off" autocapitalize="off" spellcheck="false">
+              <button type="submit">Entrar</button>
+            </form>
+            <p class="gate-error" id="gate-error" hidden>Ese no es tu nombre. Intenta de nuevo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
+  var flipCard = document.getElementById('flip-card');
   var form = document.getElementById('gate-form');
   var input = document.getElementById('gate-input');
-  var card = document.getElementById('gate-card');
+  var backContent = document.getElementById('back-content');
   var error = document.getElementById('gate-error');
+
+  function flip() {
+    if (flipCard.classList.contains('flipped')) return;
+    flipCard.classList.add('flipped');
+    flipCard.setAttribute('aria-pressed', 'true');
+    window.setTimeout(function () { input.focus(); }, 450);
+  }
+
+  flipCard.addEventListener('click', flip);
+  flipCard.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      flip();
+    }
+  });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    e.stopPropagation();
     if (input.value.trim().toLowerCase() === 'fersito') {
       window.location.href = 'itinerario.html';
     } else {
       error.hidden = false;
-      card.classList.remove('shake');
-      void card.offsetWidth;
-      card.classList.add('shake');
+      backContent.classList.remove('shake');
+      void backContent.offsetWidth;
+      backContent.classList.add('shake');
       input.select();
     }
   });
