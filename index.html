@@ -74,12 +74,105 @@
     font-family:"Space Mono", ui-monospace, SFMono-Regular, monospace;
     font-variant-numeric:tabular-nums;
   }
+  .sr-only{
+    position:absolute;
+    width:1px; height:1px;
+    padding:0; margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
 
   .page{
     max-width:760px;
     margin:0 auto;
     padding-inline:20px;
     padding-block:0 48px;
+  }
+
+  /* ---------- GATE ---------- */
+  .gate{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:
+      radial-gradient(120% 90% at 82% 8%, #FBDCA0 0%, #F2A63D 32%, #C6553F 62%, #1B2A4E 100%);
+  }
+  .gate-card{
+    width:100%;
+    max-width:380px;
+    background:var(--surface);
+    border-radius:18px;
+    box-shadow:0 24px 60px -20px rgba(10,20,25,0.45);
+    padding:36px 30px;
+    text-align:center;
+  }
+  .gate-eyebrow{
+    margin:0;
+    font-family:"Space Mono", monospace;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--coral);
+  }
+  .gate-card h1{
+    margin-top:10px;
+    font-size:1.9rem;
+    font-weight:600;
+    color:var(--text);
+  }
+  .gate-form{
+    margin-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  #gate-input{
+    font:inherit;
+    font-size:1rem;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:var(--surface-2);
+    color:var(--text);
+    text-align:center;
+  }
+  #gate-input:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:2px;
+  }
+  .gate-form button{
+    font:inherit;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:12px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--teal-strong);
+    color:#FBF2E3;
+    cursor:pointer;
+  }
+  .gate-form button:hover{ background:var(--teal); }
+  .gate-form button:focus-visible{
+    outline:2px solid var(--coral);
+    outline-offset:2px;
+  }
+  .gate-error{
+    margin:14px 0 0;
+    font-size:0.85rem;
+    color:var(--coral);
+  }
+  .gate-card.shake{ animation:shake 0.4s; }
+  @media (prefers-reduced-motion: reduce){
+    .gate-card.shake{ animation:none; }
+  }
+  @keyframes shake{
+    0%, 100%{ transform:translateX(0); }
+    20%, 60%{ transform:translateX(-8px); }
+    40%, 80%{ transform:translateX(8px); }
   }
 
   /* ---------- HERO ---------- */
@@ -350,83 +443,6 @@
     color:var(--teal-strong);
   }
 
-  /* ---------- DAY TIMELINE ---------- */
-  .days{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    flex-direction:column;
-  }
-  .day{
-    display:grid;
-    grid-template-columns:40px 1fr;
-    gap:16px;
-  }
-  .day-marker{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-  .day-dot{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:var(--teal-strong);
-    color:#FBF2E3;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:"Space Mono", monospace;
-    font-weight:700;
-    flex:none;
-  }
-  .day-line{
-    width:2px;
-    flex:1;
-    background:var(--border);
-    margin-top:6px;
-  }
-  .day:last-child .day-line{ display:none; }
-  .day-body{
-    padding-bottom:32px;
-  }
-  .day-date{
-    margin:2px 0 2px;
-    font-family:"Space Mono", monospace;
-    font-size:0.72rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--coral);
-  }
-  .day-body h3{
-    font-size:1.2rem;
-    font-weight:600;
-    margin-bottom:12px;
-  }
-  .events{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .events li{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:12px;
-    align-items:baseline;
-  }
-  .ev-time{
-    font-family:"Space Mono", monospace;
-    font-size:0.78rem;
-    color:var(--teal);
-  }
-  .ev-text{
-    font-size:0.94rem;
-  }
-
   footer{
     margin-top:20px;
     padding-top:20px;
@@ -458,7 +474,20 @@
 </style>
 </head>
 <body>
-<div class="page">
+<div class="gate" id="gate">
+  <div class="gate-card" id="gate-card">
+    <p class="gate-eyebrow">Acceso privado</p>
+    <h1>Inicia con tu nombre</h1>
+    <form class="gate-form" id="gate-form">
+      <label for="gate-input" class="sr-only">Tu nombre</label>
+      <input type="text" id="gate-input" placeholder="Tu nombre" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button type="submit">Entrar</button>
+    </form>
+    <p class="gate-error" id="gate-error" hidden>Ese no es tu nombre. Intenta de nuevo.</p>
+  </div>
+</div>
+
+<div class="page" id="trip" hidden>
   <div class="hero">
     <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
@@ -647,67 +676,32 @@
     </article>
   </section>
 
-  <section class="section">
-    <div class="section-head">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h18M8 3v4M16 3v4M5 6h14a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg>
-      <h2>Día a día</h2>
-    </div>
-
-    <ol class="days">
-      <li class="day">
-        <div class="day-marker">
-          <div class="day-dot">1</div>
-          <div class="day-line"></div>
-        </div>
-        <div class="day-body">
-          <p class="day-date">Sábado 10 de octubre</p>
-          <h3>Llegada a Puerto Vallarta</h3>
-          <ul class="events">
-            <li><span class="ev-time">11:50</span><span class="ev-text">Vuelo Volaris Y4 1310, Guadalajara → Puerto Vallarta</span></li>
-            <li><span class="ev-time">12:42</span><span class="ev-text">Aterrizaje en PVR</span></li>
-            <li><span class="ev-time">15:00</span><span class="ev-text">Check-in en Grand Palladium Vallarta Resort &amp; Spa</span></li>
-            <li><span class="ev-time">Tarde</span><span class="ev-text">Alberca, playa y primera cena all-inclusive</span></li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="day">
-        <div class="day-marker">
-          <div class="day-dot">2</div>
-          <div class="day-line"></div>
-        </div>
-        <div class="day-body">
-          <p class="day-date">Domingo 11 de octubre</p>
-          <h3>Día completo en el resort</h3>
-          <ul class="events">
-            <li><span class="ev-time">Mañana</span><span class="ev-text">Desayuno buffet y playa</span></li>
-            <li><span class="ev-time">Media día</span><span class="ev-text">Actividades acuáticas o tour opcional por Bahía de Banderas</span></li>
-            <li><span class="ev-time">Tarde</span><span class="ev-text">Alberca y tiempo libre</span></li>
-            <li><span class="ev-text">— Editen esta línea con lo que decidan hacer —</span></li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="day">
-        <div class="day-marker">
-          <div class="day-dot">3</div>
-        </div>
-        <div class="day-body">
-          <p class="day-date">Lunes 12 de octubre</p>
-          <h3>Salida</h3>
-          <ul class="events">
-            <li><span class="ev-time">Mañana</span><span class="ev-text">Última nadada y desayuno</span></li>
-            <li><span class="ev-time">12:00</span><span class="ev-text">Check-out del Grand Palladium Vallarta Resort &amp; Spa</span></li>
-            <li><span class="ev-time">14:34</span><span class="ev-text">Vuelo Volaris Y4 1311, Puerto Vallarta → Guadalajara (llegada 15:29)</span></li>
-          </ul>
-        </div>
-      </li>
-    </ol>
-  </section>
-
   <footer>
     Comparte este itinerario con quienes viajan contigo.
   </footer>
 </div>
+
+<script>
+  var gate = document.getElementById('gate');
+  var trip = document.getElementById('trip');
+  var form = document.getElementById('gate-form');
+  var input = document.getElementById('gate-input');
+  var card = document.getElementById('gate-card');
+  var error = document.getElementById('gate-error');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (input.value.trim().toLowerCase() === 'fersito') {
+      gate.hidden = true;
+      trip.hidden = false;
+    } else {
+      error.hidden = false;
+      card.classList.remove('shake');
+      void card.offsetWidth;
+      card.classList.add('shake');
+      input.select();
+    }
+  });
+</script>
 </body>
 </html>
