@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario Puerto Vallarta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1B2A4E"/>
+          <stop offset="42%" stop-color="#C6553F"/>
+          <stop offset="70%" stop-color="#F2A63D"/>
+          <stop offset="100%" stop-color="#FBDCA0"/>
+        </linearGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0B4F55"/>
+          <stop offset="100%" stop-color="#0A3B40"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFE9B8" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#FFE9B8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="0" y="0" width="1200" height="480" fill="url(#sky)"/>
+
+      <circle cx="860" cy="150" r="120" fill="url(#sunGlow)"/>
+      <circle cx="860" cy="150" r="52" fill="#FFEFC4"/>
+
+      <path d="M40 260 Q 450 40 860 150" fill="none" stroke="#FBF2E3" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round" opacity="0.85"/>
+      <circle cx="40" cy="260" r="5" fill="#FBF2E3"/>
+      <text x="52" y="255" fill="#FBF2E3" font-family="Space Mono, monospace" font-size="15" opacity="0.9">GDL</text>
+      <g transform="translate(858,150) rotate(-28)">
+        <path d="M-14 0 L14 0 L7 -5 L-2 -3 Z" fill="#FBF2E3"/>
+        <path d="M-2 -3 L2 -11 L6 -10 L4 -3 Z" fill="#FBF2E3"/>
+        <path d="M-2 3 L2 10 L6 9 L4 3 Z" fill="#FBF2E3"/>
+      </g>
+      <text x="878" y="140" fill="#FBF2E3" font-family="Space Mono, monospace" font-size="15" opacity="0.9">PVR</text>
+
+      <path d="M0 340 C 120 300, 180 300, 260 330 C 330 355, 420 300, 520 320 C 600 335, 660 300, 760 330 L 1200 330 L 1200 480 L 0 480 Z" fill="#123138" opacity="0.9"/>
+      <path d="M900 360 C 970 330, 1060 335, 1120 300 C 1160 280, 1190 300, 1200 300 L 1200 480 L 900 480 Z" fill="#0D272C"/>
+
+      <g transform="translate(120,300)">
+        <path d="M0 90 C -6 60 4 30 8 0" stroke="#0A2226" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M8 4 C -20 -6 -42 2 -58 -14" fill="none" stroke="#0A2226" stroke-width="6" stroke-linecap="round"/>
+        <path d="M8 4 C 10 -18 2 -36 18 -52" fill="none" stroke="#0A2226" stroke-width="6" stroke-linecap="round"/>
+        <path d="M8 4 C 30 -4 46 6 66 -6" fill="none" stroke="#0A2226" stroke-width="6" stroke-linecap="round"/>
+        <path d="M8 4 C 24 -14 40 -28 60 -46" fill="none" stroke="#0A2226" stroke-width="6" stroke-linecap="round"/>
+      </g>
+
+      <path d="M0 400 Q 60 388 120 400 T 240 400 T 360 400 T 480 400 T 600 400 T 720 400 T 840 400 T 960 400 T 1080 400 T 1200 400 L 1200 480 L 0 480 Z" fill="url(#sea)"/>
+      <path d="M0 400 Q 60 388 120 400 T 240 400 T 360 400 T 480 400 T 600 400 T 720 400 T 840 400 T 960 400 T 1080 400 T 1200 400" fill="none" stroke="#FBDCA0" stroke-width="2" opacity="0.5"/>
+    </svg>
+
+    <div class="hero-content">
+      <div>
+        <p class="eyebrow">Itinerario de viaje</p>
+        <h1>Puerto Vallarta</h1>
+        <p class="dates">10 – 12 de octubre &middot; 2026</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-label">Duración</span>
+          <span class="stat-value">2 noches</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Ruta</span>
+          <span class="stat-value">GDL → PVR</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Viajeros</span>
+          <span class="stat-value">2 adultos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 16l9-3 8-8c1-1 2.5.5 1.5 1.5l-8 8-3 9-2-6-6-2 3-1.5z"/></svg>
+      <h2>Vuelos</h2>
+    </div>
+
+    <div class="tickets">
+      <article class="ticket">
+        <div class="ticket-main">
+          <span class="ticket-label">Ida &middot; sábado 10 oct</span>
+          <div class="ticket-route">
+            <div class="ticket-city">
+              <span class="code">GDL</span>
+              <span class="city">Guadalajara</span>
+              <span class="time">11:50</span>
+            </div>
+            <div class="ticket-path">
+              <svg viewBox="0 0 100 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <line x1="2" y1="8" x2="90" y2="8" stroke-dasharray="3 5"/>
+                <path d="M84 8 L94 8 M88 4 L94 8 L88 12" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ticket-city">
+              <span class="code">PVR</span>
+              <span class="city">Puerto Vallarta</span>
+              <span class="time">12:42</span>
+            </div>
+          </div>
+          <div class="ticket-meta">
+            <span>Volaris &middot; Y4 1310</span>
+            <span>52 min de vuelo</span>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <span class="stub-label">Confirmación</span>
+          <span class="stub-code">XHRKRG</span>
+        </div>
+      </article>
+
+      <article class="ticket">
+        <div class="ticket-main">
+          <span class="ticket-label">Vuelta &middot; lunes 12 oct</span>
+          <div class="ticket-route">
+            <div class="ticket-city">
+              <span class="code">PVR</span>
+              <span class="city">Puerto Vallarta</span>
+              <span class="time">14:34</span>
+            </div>
+            <div class="ticket-path">
+              <svg viewBox="0 0 100 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <line x1="2" y1="8" x2="90" y2="8" stroke-dasharray="3 5"/>
+                <path d="M84 8 L94 8 M88 4 L94 8 L88 12" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ticket-city">
+              <span class="code">GDL</span>
+              <span class="city">Guadalajara</span>
+              <span class="time">15:29</span>
+            </div>
+          </div>
+          <div class="ticket-meta">
+            <span>Volaris &middot; Y4 1311</span>
+            <span>Sin escalas</span>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <span class="stub-label">Confirmación</span>
+          <span class="stub-code">XHRKRG</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20V9m0 11h18M3 20l0-4h18v4M7 9V5a2 2 0 012-2h6a2 2 0 012 2v4M3 9h18"/></svg>
+      <h2>Hospedaje</h2>
+    </div>
+
+    <article class="hotel-card">
+      <span class="badge">Reservada</span>
+      <h3>Grand Palladium Vallarta Resort &amp; Spa</h3>
+      <p class="hotel-sub">All Inclusive &middot; Bahía de Banderas, Puerto Vallarta</p>
+
+      <div class="hotel-grid">
+        <div>
+          <span class="g-label">Check-in</span>
+          <span class="g-value">Sáb 10 oct &middot; 3:00 pm</span>
+        </div>
+        <div>
+          <span class="g-label">Check-out</span>
+          <span class="g-value">Lun 12 oct &middot; 12:00 pm</span>
+        </div>
+        <div>
+          <span class="g-label">Huéspedes</span>
+          <span class="g-value">2 adultos &middot; 1 habitación</span>
+        </div>
+        <div>
+          <span class="g-label">Noches</span>
+          <span class="g-value">2</span>
+        </div>
+      </div>
+
+      <div class="hotel-codes">
+        <div>
+          <span class="g-label">Número de confirmación</span>
+          <span class="code-mono">SH31133067</span>
+        </div>
+        <div>
+          <span class="g-label">Itinerario Expedia</span>
+          <span class="code-mono">73547812156609</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    Comparte este itinerario con quienes viajan contigo.
+  </footer>
+</div>
+</body>
+</html>
