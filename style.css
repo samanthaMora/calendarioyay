@@ -470,7 +470,73 @@ h1,h2,h3{
   }
   .ht-stub::before{ left:-11px; top:-11px; }
   .ht-stub::after{ left:auto; right:-11px; top:-11px; bottom:auto; }
-  .ht-barcode{ display:none; }
+}
+
+/* ---------- COUNTDOWN ---------- */
+.countdown{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:10px;
+  margin-top:18px;
+  padding:14px 20px;
+  background:linear-gradient(135deg, var(--teal-strong), var(--teal));
+  color:#FBF2E3;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.countdown-num{
+  font-family:"Fraunces", serif;
+  font-weight:700;
+  font-size:1.8rem;
+  font-variant-numeric:tabular-nums;
+}
+.countdown-text{
+  font-size:0.85rem;
+  opacity:0.92;
+}
+
+/* ---------- AMENITIES ---------- */
+.amenities{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  margin-top:14px;
+}
+.amenity{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:0.78rem;
+  color:var(--text-soft);
+}
+.amenity svg{ color:var(--teal); flex:none; }
+
+/* ---------- PACKING LIST ---------- */
+.packing{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+  gap:10px 16px;
+}
+.packing li{
+  position:relative;
+  padding-left:24px;
+  font-size:0.92rem;
+  color:var(--text);
+}
+.packing li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0.3em;
+  width:13px;
+  height:13px;
+  border:2px solid var(--coral);
+  border-radius:3px;
 }
 
 /* ---------- SECTIONS ---------- */
