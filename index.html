@@ -28,7 +28,7 @@
               <h1>Nombre</h1>
               <form class="gate-form" id="gate-form">
                 <label for="gate-input" class="sr-only">Tu nombre</label>
-                <input type="text" id="gate-input" placeholder="Escribe tu &quot;nombre&quot; :)" autocomplete="off" autocapitalize="off" spellcheck="false">
+                <input type="text" id="gate-input" class="gate-text-input" placeholder="Escribe tu &quot;nombre&quot; :)" autocomplete="off" autocapitalize="off" spellcheck="false">
                 <button type="submit">Entrar</button>
               </form>
               <p class="gate-error" id="gate-error" hidden>Ese no es tu nombre &gt;:(</p>
@@ -79,6 +79,19 @@
   </div>
 </div>
 
+<div class="confirm-gate" id="confirm-gate">
+  <div class="red-flash" id="red-flash" aria-hidden="true"></div>
+  <div class="confirm-card" id="confirm-card">
+    <h1>¿Seguro?</h1>
+    <form class="gate-form" id="confirm-form">
+      <label for="confirm-input" class="sr-only">Tu respuesta</label>
+      <input type="text" id="confirm-input" class="gate-text-input" placeholder="Sí o no" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button type="submit">Confirmar</button>
+    </form>
+  </div>
+  <p class="confirm-toast" id="confirm-toast" hidden>&iexcl;Qu&eacute; te pasaa, tienes que estar seguro!</p>
+</div>
+
 <script>
   var flipCard = document.getElementById('flip-card');
   var form = document.getElementById('gate-form');
@@ -113,7 +126,11 @@
     e.preventDefault();
     e.stopPropagation();
     if (input.value.trim().toLowerCase() === 'fersito') {
-      window.location.href = 'itinerario.html';
+      var confirmGate = document.getElementById('confirm-gate');
+      confirmGate.classList.add('visible');
+      window.setTimeout(function () {
+        document.getElementById('confirm-input').focus();
+      }, 50);
     } else {
       error.hidden = false;
       backContent.classList.remove('shake');
@@ -121,6 +138,42 @@
       backContent.classList.add('shake');
       input.select();
     }
+  });
+
+  var confirmForm = document.getElementById('confirm-form');
+  var confirmInput = document.getElementById('confirm-input');
+  var confirmCard = document.getElementById('confirm-card');
+  var redFlash = document.getElementById('red-flash');
+  var confirmToast = document.getElementById('confirm-toast');
+  var YES_WORDS = ['si', 'sí', 'yes', 'claro', 'obvio', 'obviamente', 'seguro', 'simon', 'sip', 'yep', 'ok', 'okay'];
+
+  function normalize(str) {
+    return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  confirmForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (YES_WORDS.indexOf(normalize(confirmInput.value)) !== -1) {
+      window.location.href = 'itinerario.html';
+      return;
+    }
+
+    redFlash.classList.remove('flash');
+    void redFlash.offsetWidth;
+    redFlash.classList.add('flash');
+
+    confirmCard.classList.remove('shake');
+    void confirmCard.offsetWidth;
+    confirmCard.classList.add('shake');
+
+    confirmToast.hidden = false;
+    confirmToast.classList.remove('show');
+    void confirmToast.offsetWidth;
+    confirmToast.classList.add('show');
+    window.setTimeout(function () { confirmToast.hidden = true; }, 1400);
+
+    confirmInput.value = '';
+    confirmInput.focus();
   });
 
   document.querySelectorAll('.postit-card').forEach(function (postit) {
