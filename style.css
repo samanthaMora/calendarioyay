@@ -82,14 +82,20 @@ h1,h2,h3{
 }
 
 /* ---------- GATE ---------- */
+:root{
+  --stars-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ccircle cx='18' cy='26' r='1.2' fill='white' fill-opacity='0.85'/%3E%3Ccircle cx='58' cy='78' r='0.8' fill='white' fill-opacity='0.55'/%3E%3Ccircle cx='104' cy='38' r='1' fill='white' fill-opacity='0.5'/%3E%3Ccircle cx='150' cy='92' r='1.4' fill='white' fill-opacity='0.8'/%3E%3Ccircle cx='190' cy='150' r='0.9' fill='white' fill-opacity='0.5'/%3E%3Ccircle cx='38' cy='138' r='1.1' fill='white' fill-opacity='0.7'/%3E%3Ccircle cx='88' cy='172' r='0.7' fill='white' fill-opacity='0.4'/%3E%3Ccircle cx='128' cy='18' r='0.9' fill='white' fill-opacity='0.6'/%3E%3Ccircle cx='8' cy='196' r='1.3' fill='white' fill-opacity='0.85'/%3E%3Ccircle cx='176' cy='8' r='0.8' fill='white' fill-opacity='0.5'/%3E%3Ccircle cx='210' cy='60' r='1' fill='white' fill-opacity='0.6'/%3E%3Ccircle cx='68' cy='10' r='0.6' fill='white' fill-opacity='0.4'/%3E%3C/svg%3E");
+}
 .gate{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:24px;
-  background:
+  background-image:
+    var(--stars-bg),
     radial-gradient(90% 65% at 50% 8%, #F4ECC6 0%, #DCE6EF 24%, #9FB8CE 48%, #5C7896 72%, #263A54 100%);
+  background-repeat:repeat, no-repeat;
+  background-size:220px 220px, cover;
 }
 .gate-wrap{
   width:100%;
@@ -97,7 +103,7 @@ h1,h2,h3{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:16px;
+  gap:18px;
 }
 .gate-eyebrow{
   margin:0;
@@ -111,8 +117,23 @@ h1,h2,h3{
 
 /* ---------- FLIP CARD ---------- */
 .flip-scene{
+  position:relative;
   width:100%;
   perspective:1400px;
+  animation:float 6s ease-in-out infinite;
+}
+.flip-scene::before{
+  content:"";
+  position:absolute;
+  inset:-18% -30%;
+  background:radial-gradient(circle, rgba(240,229,168,0.55) 0%, rgba(240,229,168,0) 68%);
+  filter:blur(18px);
+  z-index:-1;
+  pointer-events:none;
+}
+@keyframes float{
+  0%, 100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
 }
 .flip-card{
   position:relative;
@@ -161,7 +182,13 @@ h1,h2,h3{
 }
 .flip-face.back{
   transform:rotateY(180deg);
-  background:var(--surface);
+  background-image:
+    var(--stars-bg),
+    radial-gradient(120% 80% at 50% -8%, rgba(240,229,168,0.32) 0%, rgba(240,229,168,0) 48%),
+    linear-gradient(165deg, #30435F 0%, #16233A 100%);
+  background-repeat:repeat, no-repeat, no-repeat;
+  background-size:170px 170px, auto, auto;
+  box-shadow:inset 0 0 44px rgba(0,0,0,0.35);
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -172,7 +199,7 @@ h1,h2,h3{
 .flip-face.back h1{
   font-size:1.5rem;
   font-weight:600;
-  color:var(--text);
+  color:#F4ECC6;
 }
 .gate-form{
   margin-top:20px;
@@ -185,13 +212,16 @@ h1,h2,h3{
   font-size:1rem;
   padding:12px 14px;
   border-radius:10px;
-  border:1px solid var(--border);
-  background:var(--surface-2);
-  color:var(--text);
+  border:1px solid rgba(244,236,198,0.35);
+  background:rgba(255,255,255,0.08);
+  color:#F4ECC6;
   text-align:center;
 }
+#gate-input::placeholder{
+  color:rgba(244,236,198,0.55);
+}
 #gate-input:focus-visible{
-  outline:2px solid var(--teal);
+  outline:2px solid #F0E5A8;
   outline-offset:2px;
 }
 .gate-form button{
@@ -201,24 +231,25 @@ h1,h2,h3{
   padding:12px 14px;
   border-radius:10px;
   border:none;
-  background:var(--teal-strong);
-  color:#FBF2E3;
+  background:linear-gradient(180deg, #F4ECC6 0%, #E8D98A 100%);
+  color:#1F2E45;
   cursor:pointer;
 }
-.gate-form button:hover{ background:var(--teal); }
+.gate-form button:hover{ background:linear-gradient(180deg, #FBF6DE 0%, #F0E5A8 100%); }
 .gate-form button:focus-visible{
-  outline:2px solid var(--coral);
+  outline:2px solid #F4ECC6;
   outline-offset:2px;
 }
 .gate-error{
   margin:14px 0 0;
   font-size:0.85rem;
-  color:var(--coral);
+  color:#FF9E80;
 }
 .back-content.shake{ animation:shake 0.4s; }
 @media (prefers-reduced-motion: reduce){
   .back-content.shake{ animation:none; }
   .flip-card{ transition:none; }
+  .flip-scene{ animation:none; }
 }
 @keyframes shake{
   0%, 100%{ transform:translateX(0); }
