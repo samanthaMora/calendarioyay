@@ -702,6 +702,72 @@ footer{
   text-align:center;
 }
 
+/* ---------- PROOFS + LIGHTBOX ---------- */
+.proofs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(96px, 1fr));
+  gap:14px;
+}
+.proof{
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  padding:0;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+}
+.proof img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:top;
+  display:block;
+}
+.proof-label{
+  padding:10px 12px;
+  font-size:0.76rem;
+  font-weight:600;
+  color:var(--text);
+}
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:rgba(10,15,20,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.lightbox[hidden]{ display:none; }
+.lightbox img{
+  max-width:100%;
+  max-height:100%;
+  border-radius:10px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.5);
+}
+.lightbox-close{
+  position:absolute;
+  top:calc(16px + env(safe-area-inset-top, 0px));
+  right:16px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,0.15);
+  color:#fff;
+  font-size:1.5rem;
+  line-height:1;
+  cursor:pointer;
+}
+.lightbox-close:hover{ background:rgba(255,255,255,0.25); }
+
 @media (max-width:480px){
   .ticket{ flex-direction:column; }
   .ticket-stub{
