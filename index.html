@@ -14,21 +14,56 @@
   <div class="gate-wrap">
     <p class="gate-eyebrow">Feliz cumpleaños...</p>
 
-    <div class="flip-scene">
-      <div class="flip-card" id="flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="Toca la carta para continuar">
-        <div class="flip-face front">
-          <img src="tluna.jpg" alt="Carta de tarot: La Luna">
-          <span class="flip-hint">Toca la carta</span>
+    <div class="card-cluster">
+      <div class="flip-scene">
+        <div class="flip-card" id="flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="Toca la carta para continuar">
+          <div class="flip-face front">
+            <img src="tluna.jpg" alt="Carta de tarot: La Luna">
+            <span class="flip-hint">Toca la carta</span>
+          </div>
+          <div class="flip-face back">
+            <div class="back-content" id="back-content">
+              <h1>Nombre</h1>
+              <form class="gate-form" id="gate-form">
+                <label for="gate-input" class="sr-only">Tu nombre</label>
+                <input type="text" id="gate-input" placeholder="Escribe tu &quot;nombre&quot; :)" autocomplete="off" autocapitalize="off" spellcheck="false">
+                <button type="submit">Entrar</button>
+              </form>
+              <p class="gate-error" id="gate-error" hidden>Ese no es tu nombre. Intenta de nuevo.</p>
+            </div>
+          </div>
         </div>
-        <div class="flip-face back">
-          <div class="back-content" id="back-content">
-            <h1>Nombre</h1>
-            <form class="gate-form" id="gate-form">
-              <label for="gate-input" class="sr-only">Tu nombre</label>
-              <input type="text" id="gate-input" placeholder="Escribe tu &quot;nombre&quot; :)" autocomplete="off" autocapitalize="off" spellcheck="false">
-              <button type="submit">Entrar</button>
-            </form>
-            <p class="gate-error" id="gate-error" hidden>Ese no es tu nombre. Intenta de nuevo.</p>
+      </div>
+
+      <div class="postits">
+        <div class="postit">
+          <div class="postit-card" role="button" tabindex="0" aria-pressed="false" aria-label="Voltear post-it: dato curioso">
+            <div class="postit-face postit-front">Dato curioso</div>
+            <div class="postit-face postit-back">El malecón de Puerto Vallarta mide más de 12&nbsp;km junto al mar.</div>
+          </div>
+        </div>
+        <div class="postit">
+          <div class="postit-card" role="button" tabindex="0" aria-pressed="false" aria-label="Voltear post-it: dato curioso">
+            <div class="postit-face postit-front">Dato curioso</div>
+            <div class="postit-face postit-back">Cada invierno llegan ballenas jorobadas a la Bahía de Banderas.</div>
+          </div>
+        </div>
+        <div class="postit">
+          <div class="postit-card" role="button" tabindex="0" aria-pressed="false" aria-label="Voltear post-it: dato curioso">
+            <div class="postit-face postit-front">Dato curioso</div>
+            <div class="postit-face postit-back">La Zona Romántica era antes un pueblo de pescadores.</div>
+          </div>
+        </div>
+        <div class="postit">
+          <div class="postit-card" role="button" tabindex="0" aria-pressed="false" aria-label="Voltear post-it: pista del regalo">
+            <div class="postit-face postit-front">Pista</div>
+            <div class="postit-face postit-back">Vas a necesitar bloqueador solar y ganas de nadar.</div>
+          </div>
+        </div>
+        <div class="postit">
+          <div class="postit-card" role="button" tabindex="0" aria-pressed="false" aria-label="Voltear post-it: pista del regalo">
+            <div class="postit-face postit-front">Pista</div>
+            <div class="postit-face postit-back">Empaca traje de baño: la sorpresa es junto al mar.</div>
           </div>
         </div>
       </div>
@@ -78,6 +113,20 @@
       backContent.classList.add('shake');
       input.select();
     }
+  });
+
+  document.querySelectorAll('.postit-card').forEach(function (postit) {
+    function toggle() {
+      var isFlipped = postit.classList.toggle('flipped');
+      postit.setAttribute('aria-pressed', isFlipped ? 'true' : 'false');
+    }
+    postit.addEventListener('click', toggle);
+    postit.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
   });
 </script>
 </body>

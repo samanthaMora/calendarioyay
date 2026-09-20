@@ -99,7 +99,7 @@ h1,h2,h3{
 }
 .gate-wrap{
   width:100%;
-  max-width:300px;
+  max-width:640px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -115,10 +115,116 @@ h1,h2,h3{
   opacity:0.85;
 }
 
+/* ---------- CARD CLUSTER + POST-ITS ---------- */
+.card-cluster{
+  position:relative;
+  width:100%;
+}
+.postits{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+  margin-top:28px;
+}
+.postit{
+  perspective:900px;
+  width:108px;
+  height:108px;
+  flex:none;
+}
+.postit:nth-of-type(1){ transform:rotate(-7deg); }
+.postit:nth-of-type(2){ transform:rotate(5deg); }
+.postit:nth-of-type(3){ transform:rotate(-4deg); }
+.postit:nth-of-type(4){ transform:rotate(6deg); }
+.postit:nth-of-type(5){ transform:rotate(-5deg); }
+.postit-card{
+  position:relative;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.postit-card.flipped{ transform:rotateY(180deg); }
+.postit-card:focus-visible{
+  outline:2px solid #F0E5A8;
+  outline-offset:3px;
+}
+.postit-face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:2px;
+  padding:14px 10px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#2A3245;
+  box-shadow:0 12px 20px -10px rgba(10,15,25,0.5);
+}
+.postit-face::before{
+  content:"";
+  position:absolute;
+  top:-7px;
+  left:50%;
+  width:36px;
+  height:15px;
+  transform:translateX(-50%) rotate(-2deg);
+  background:rgba(255,255,255,0.5);
+  border:1px solid rgba(255,255,255,0.35);
+}
+.postit-front{
+  background:#F4ECC6;
+  font-family:"Space Mono", monospace;
+  font-size:0.64rem;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.postit-back{
+  transform:rotateY(180deg);
+  background:#F4ECC6;
+  font-family:"Work Sans", sans-serif;
+  font-size:0.66rem;
+  line-height:1.35;
+}
+.postit:nth-of-type(2) .postit-front,
+.postit:nth-of-type(2) .postit-back,
+.postit:nth-of-type(4) .postit-front,
+.postit:nth-of-type(4) .postit-back{
+  background:#DCE6EF;
+}
+.postit:nth-of-type(3) .postit-front,
+.postit:nth-of-type(3) .postit-back{
+  background:#E7CFC3;
+}
+
+@media (min-width:800px){
+  .card-cluster{
+    max-width:560px;
+    margin-inline:auto;
+  }
+  .postits{ display:contents; }
+  .postit{
+    position:absolute;
+    width:118px;
+    height:118px;
+  }
+  .postit:nth-of-type(1){ top:6px; left:-32px; transform:rotate(-8deg); }
+  .postit:nth-of-type(2){ top:34px; right:-38px; transform:rotate(6deg); }
+  .postit:nth-of-type(3){ top:280px; left:-46px; transform:rotate(-5deg); }
+  .postit:nth-of-type(4){ top:310px; right:-46px; transform:rotate(7deg); }
+  .postit:nth-of-type(5){ bottom:10px; left:50%; transform:translateX(-50%) rotate(-4deg); }
+}
+
 /* ---------- FLIP CARD ---------- */
 .flip-scene{
   position:relative;
   width:100%;
+  max-width:300px;
+  margin-inline:auto;
   perspective:1400px;
   animation:float 6s ease-in-out infinite;
 }
@@ -250,6 +356,7 @@ h1,h2,h3{
   .back-content.shake{ animation:none; }
   .flip-card{ transition:none; }
   .flip-scene{ animation:none; }
+  .postit-card{ transition:none; }
 }
 @keyframes shake{
   0%, 100%{ transform:translateX(0); }
