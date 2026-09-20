@@ -192,6 +192,10 @@ h1,h2,h3{
 .postit:nth-of-type(3) .postit-back{
   background:#E7CFC3;
 }
+.postit:nth-of-type(6) .postit-front,
+.postit:nth-of-type(6) .postit-back{
+  background:#DCE6EF;
+}
 
 /* sizes tuned per note length; stacked in a row below the card on narrow screens */
 .postit:nth-of-type(1){ width:120px; height:140px; transform:rotate(-4deg); }
@@ -199,6 +203,7 @@ h1,h2,h3{
 .postit:nth-of-type(3){ width:120px; height:140px; transform:rotate(-3deg); }
 .postit:nth-of-type(4){ width:80px; height:80px; transform:rotate(5deg); }
 .postit:nth-of-type(5){ width:104px; height:104px; transform:rotate(-5deg); }
+.postit:nth-of-type(6){ width:100px; height:100px; transform:rotate(4deg); }
 
 @media (min-width:820px){
   .card-cluster{ max-width:660px; }
@@ -206,6 +211,7 @@ h1,h2,h3{
   .postit{ position:absolute; }
   .postit:nth-of-type(1){ top:0; left:10px; }
   .postit:nth-of-type(3){ top:190px; left:10px; }
+  .postit:nth-of-type(6){ top:340px; left:10px; }
   .postit:nth-of-type(2){ top:10px; right:10px; }
   .postit:nth-of-type(4){ top:142px; right:10px; }
   .postit:nth-of-type(5){ top:262px; right:10px; }
