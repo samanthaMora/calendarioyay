@@ -123,18 +123,18 @@ h1,h2,h3{
   max-width:300px;
   margin-inline:auto;
 }
-.postit{
-  position:absolute;
-  perspective:900px;
-  width:72px;
-  height:72px;
-  z-index:3;
+.postits{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+  margin-top:26px;
 }
-.postit:nth-of-type(1){ top:-16px; left:-14px; transform:rotate(-11deg); }
-.postit:nth-of-type(2){ top:-12px; right:-16px; transform:rotate(9deg); }
-.postit:nth-of-type(3){ top:40%; left:-22px; transform:rotate(-7deg); }
-.postit:nth-of-type(4){ bottom:-14px; right:-14px; transform:rotate(8deg); }
-.postit:nth-of-type(5){ bottom:-20px; left:20%; transform:rotate(-5deg); }
+.postit{
+  perspective:900px;
+  z-index:3;
+  flex:none;
+}
 .postit-card{
   position:relative;
   width:100%;
@@ -153,7 +153,7 @@ h1,h2,h3{
   inset:0;
   backface-visibility:hidden;
   border-radius:2px;
-  padding:10px 8px;
+  padding:12px 10px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -179,8 +179,8 @@ h1,h2,h3{
   transform:rotateY(180deg);
   background:#F4ECC6;
   font-family:"Work Sans", sans-serif;
-  font-size:0.6rem;
-  line-height:1.3;
+  font-size:0.64rem;
+  line-height:1.32;
 }
 .postit:nth-of-type(2) .postit-front,
 .postit:nth-of-type(2) .postit-back,
@@ -193,15 +193,22 @@ h1,h2,h3{
   background:#E7CFC3;
 }
 
-@media (min-width:600px){
-  .card-cluster{ max-width:340px; }
-  .postit{ width:88px; height:88px; }
-  .postit-back{ font-size:0.68rem; }
-  .postit:nth-of-type(1){ top:-20px; left:-30px; }
-  .postit:nth-of-type(2){ top:-16px; right:-32px; }
-  .postit:nth-of-type(3){ left:-40px; }
-  .postit:nth-of-type(4){ bottom:-18px; right:-28px; }
-  .postit:nth-of-type(5){ bottom:-26px; left:22%; }
+/* sizes tuned per note length; stacked in a row below the card on narrow screens */
+.postit:nth-of-type(1){ width:120px; height:140px; transform:rotate(-4deg); }
+.postit:nth-of-type(2){ width:92px; height:92px; transform:rotate(6deg); }
+.postit:nth-of-type(3){ width:120px; height:140px; transform:rotate(-3deg); }
+.postit:nth-of-type(4){ width:80px; height:80px; transform:rotate(5deg); }
+.postit:nth-of-type(5){ width:104px; height:104px; transform:rotate(-5deg); }
+
+@media (min-width:820px){
+  .card-cluster{ max-width:660px; }
+  .postits{ display:contents; }
+  .postit{ position:absolute; }
+  .postit:nth-of-type(1){ top:0; left:10px; }
+  .postit:nth-of-type(3){ top:190px; left:10px; }
+  .postit:nth-of-type(2){ top:10px; right:10px; }
+  .postit:nth-of-type(4){ top:142px; right:10px; }
+  .postit:nth-of-type(5){ top:262px; right:10px; }
 }
 
 /* ---------- FLIP CARD ---------- */
