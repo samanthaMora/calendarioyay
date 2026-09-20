@@ -71,6 +71,20 @@
   </div>
 </div>
 
+<div class="transition-overlay" id="transition-overlay" aria-hidden="true">
+  <div class="transition-sweep"></div>
+  <svg class="transition-plane" viewBox="0 0 100 100">
+    <g transform="rotate(90 50 50)" fill="#1F2E45">
+      <ellipse cx="50" cy="50" rx="8" ry="38"/>
+      <path d="M50 8 L58 26 L42 26 Z"/>
+      <path d="M50 42 L14 62 L14 68 L50 54 Z"/>
+      <path d="M50 42 L86 62 L86 68 L50 54 Z"/>
+      <path d="M46 82 L32 96 L46 92 Z"/>
+      <path d="M54 82 L68 96 L54 92 Z"/>
+    </g>
+  </svg>
+</div>
+
 <script>
   var flipCard = document.getElementById('flip-card');
   var form = document.getElementById('gate-form');
@@ -105,7 +119,15 @@
     e.preventDefault();
     e.stopPropagation();
     if (input.value.trim().toLowerCase() === 'fersito') {
-      window.location.href = 'itinerario.html';
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        window.location.href = 'itinerario.html';
+        return;
+      }
+      document.getElementById('transition-overlay').classList.add('active');
+      window.setTimeout(function () {
+        window.location.href = 'itinerario.html';
+      }, 1550);
     } else {
       error.hidden = false;
       backContent.classList.remove('shake');
