@@ -367,7 +367,7 @@ h1,h2,h3{
   position:absolute;
   inset:0;
   width:0%;
-  background:linear-gradient(180deg, #6EC1E4 0%, #BEE7E8 38%, #F7ECC9 72%, #EAC57E 100%);
+  background:linear-gradient(180deg, #6EC1E4 0%, #BEE7E8 38%, #F7ECC9 72%, #FBF2E3 100%);
   transition:width 1.5s cubic-bezier(0.65,0,0.35,1);
 }
 .transition-overlay.active .transition-sweep{
