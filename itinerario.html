@@ -23,7 +23,7 @@
       <svg class="hero-arrow" width="30" height="12" viewBox="0 0 30 12" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="0" y1="6" x2="23" y2="6"/><path d="M18 1l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="hero-code">PVR</span>
     </div>
-    <p class="hero-meta">10 &ndash; 12 de octubre 2026 &middot; 2 noches &middot; 2 adultos</p>
+    <p class="hero-meta">10 &ndash; 13 de octubre 2026 &middot; 3 noches &middot; 2 adultos</p>
   </header>
 
   <nav class="section-nav">
@@ -67,10 +67,10 @@
       </article>
 
       <article class="ticket">
-        <span class="ticket-label">Vuelta &middot; lunes 12 oct</span>
+        <span class="ticket-label">Vuelta &middot; martes 13 oct</span>
         <div class="ticket-route">
           <div class="ticket-endpoint">
-            <span class="ticket-time">14:34</span>
+            <span class="ticket-time">10:00</span>
             <span class="ticket-code">PVR</span>
             <span class="ticket-city">Puerto Vallarta</span>
           </div>
@@ -79,16 +79,16 @@
               <line x1="2" y1="8" x2="90" y2="8" stroke-dasharray="3 5"/>
               <path d="M84 8 L94 8 M88 4 L94 8 L88 12" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="ticket-duration">Sin escalas</span>
+            <span class="ticket-duration">55 min</span>
           </div>
           <div class="ticket-endpoint dest">
-            <span class="ticket-time">15:29</span>
+            <span class="ticket-time">10:55</span>
             <span class="ticket-code">GDL</span>
             <span class="ticket-city">Guadalajara</span>
           </div>
         </div>
         <div class="ticket-footer">
-          <span>Volaris &middot; Y4 1311</span>
+          <span>Volaris &middot; Y4 1313</span>
           <span class="ticket-confirmation">Confirmación XHRKRG</span>
         </div>
       </article>
@@ -151,6 +151,38 @@
         </div>
       </div>
     </article>
+
+    <article class="hotel-card">
+      <span class="badge">Reservada &middot; noche extra</span>
+      <h3>Grand Palladium Vallarta Resort &amp; Spa</h3>
+      <p class="hotel-sub">All Inclusive &middot; Bahía de Banderas, Puerto Vallarta</p>
+
+      <div class="hotel-grid">
+        <div>
+          <span class="g-label">Check-in</span>
+          <span class="g-value">Lun 12 oct &middot; 3:00 pm</span>
+        </div>
+        <div>
+          <span class="g-label">Check-out</span>
+          <span class="g-value">Mar 13 oct &middot; 12:00 pm</span>
+        </div>
+        <div>
+          <span class="g-label">Huéspedes</span>
+          <span class="g-value">2 adultos &middot; 1 habitación</span>
+        </div>
+        <div>
+          <span class="g-label">Noches</span>
+          <span class="g-value">1</span>
+        </div>
+      </div>
+
+      <div class="hotel-codes">
+        <div>
+          <span class="g-label">Número de confirmación</span>
+          <span class="code-mono">73549986582648</span>
+        </div>
+      </div>
+    </article>
   </section>
 
   <section class="section" id="comprobantes">
@@ -167,6 +199,10 @@
       <button type="button" class="proof" data-full="comprobante-hotel.jpg" aria-label="Ver comprobante: hospedaje">
         <img src="comprobante-hotel.jpg" alt="Comprobante del hospedaje">
         <span class="proof-label">Hospedaje</span>
+      </button>
+      <button type="button" class="proof" data-full="comprobante-hotel-extra.jpg" aria-label="Ver comprobante: hospedaje noche extra">
+        <img src="comprobante-hotel-extra.jpg" alt="Comprobante del hospedaje, noche extra">
+        <span class="proof-label">Hospedaje (extra)</span>
       </button>
       <button type="button" class="proof" data-full="comprobante-vuelo-regreso.jpg" aria-label="Ver comprobante: vuelo de regreso">
         <img src="comprobante-vuelo-regreso.jpg" alt="Comprobante del vuelo de regreso">
@@ -188,7 +224,7 @@
 <script>
   (function () {
     var tripStart = new Date('2026-10-10T00:00:00');
-    var tripEnd = new Date('2026-10-12T23:59:59');
+    var tripEnd = new Date('2026-10-13T23:59:59');
     var now = new Date();
     var numEl = document.getElementById('countdown-num');
     var textEl = document.getElementById('countdown-text');
